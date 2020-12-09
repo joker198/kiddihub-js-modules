@@ -1,195 +1,118 @@
-class __El__ {
+/**
+ * @author joker20
+ * @param {Element} element
+ */
+var __Element__ = function (element) {
+  var self = element
+  self.value = element.getAttribute('value')
+  /** */
+  this.__defineGetter__('value', () => self.value)
+  this.__defineSetter__('value', value => self.value = value)
+  /** */
+  this.__defineGetter__('html', () => self.innerHTML)
+  this.__defineSetter__('html', html => self.innerHTML = html)
+  /** */
+  this.__defineGetter__('text', () => self.innerText)
+  this.__defineSetter__('text', text => self.innerText = text)
+  /** */
+  this.__defineGetter__('id', () => self.getAttribute('id'))
+  this.__defineSetter__('id', id => self.setAttribute('id', id))
+  /** */
+  this.__defineGetter__('name', () => self.getAttribute('name'))
+  this.__defineSetter__('name', name => self.setAttribute('name', name))
+  /** */
+  this.__defineGetter__('href', () => self.getAttribute('href'))
+  this.__defineSetter__('href', href => self.setAttribute('href', href))
+  /** */
+  this.__defineGetter__('raw', () => self)
+  /** */
+  this.__defineGetter__('class', () => self.classList)
+  /** */
+  this.__defineGetter__('css', () => self.style)
+  /** */
+  this.__defineGetter__('parent', () => self.parentElement)
+  /** */
+  this.__defineGetter__('exist', () => self!=null)
   /**
-   * @author joker20
-   * @param {Element | String} el
+   * @param {String} selector
    */
-  constructor (el) {
-    this._el = typeof el=='object'?el:document.querySelector(el)
-  }
-  get raw () {
-    return this._el
-  }
-  set html (html) {
-    this._el.innerHTML = html
-  }
-  get html () {
-    return this._el.innerHTML
-  }
-  set text (text) {
-    this._el.innerText = text
-  }
-  get text () {
-    return this._el.innerText
-  }
-  set value (value) {
-    this._el.value = value
-  }
-  get value () {
-    return this._el.value
-  }
-  set id(val) {
-    this._el.id = val
-  }
-  get id () {
-    return this._el.id==undefined?'':this._el.id
-  }
-  get name () {
-    return this.attr('name')==undefined?'':this.attr('name')
-  }
-  get parent () {
-    return this._el.parentElement
-  }
-  get exist () {
-    return this._el!=null
-  }
-  get href () {
-    return this._el.href
-  }
-  set href (value) {
-    this._el.href = value
-  }
+  this.first = selector => self.querySelector(selector)
   /**
-   * Set style attribute
-   * @param {String} name style attribute
-   * @param {*} value
+   * @param {String} selector
    */
-  css(name, value) {
-    this._el.style[name] = value
-  }
+  this.find = selector => self.querySelectorAll(selector)
   /**
-   * Get first child element by selector
-   * @param {String} selector 
+   * Emit event on element
+   * @param {String} event
+   * @param {*} data
    */
-  first (selector) {
-    return this._el.querySelector(selector)
-  }
+  this.emit = (event, data = null) => self.dispatchEvent(new CustomEvent(event, {detail: data}))
   /**
-   * Get childs element by selector
-   * @param {String} selector 
-   */
-  find (selector) {
-    return this._el.querySelectorAll(selector)
-  }
-  /**
-   * Assign event listener to element
+   * Listen event on element
    * @param {String} event
    * @param {Function} listener
    */
-  on (event, listener) {
-    return this._el.addEventListener(event, listener)
-  }
-  /**
-   * Hide element
-   */
-  hide () {
-    this._el.style.display='none'
-  }
+  this.on = (event, listener) => self.addEventListener(event, e => listener(e, e.detail))
   /**
    * Show element
    * @param {String} display display style
    */
-  show (display='block') {
-    this._el.style.display=display
-  }
+  this.show = (display='block') => self.style.display=display
   /**
    * Toggle element
    * @param {String} display display style
    */
-  toggle (display='block') {
-    this._el.style.display=this._el.style.display=='none'?display:'none'
-  }
+  this.toggle = (display='block') => self.style.display=self.style.display=='none'?display:'none'
+  /**
+   * Hide element
+   */
+  this.hide = () => self.style.display='none'
   /**
    * Remove element
    */
-  remove () {
-    this._el.remove()
-  }
+  this.remove = () => self.remove()
   /**
-   * Set or access element attribute
+   * Get or set attribute of element
    * @param {String} name
    * @param {String} value
    */
-  attr (name, value=null) {
-    if (value==null) return this._el.getAttribute(name)
-    this._el.setAttribute(name, value)
+  this.attr = (name, value) => {
+    return value==undefined?self.getAttribute(name):self.setAttribute(name, value)
   }
-  hasAttr (name) {
-    return this._el.hasAttribute(name)
-  }
+  /**
+   * Check if element has attribute
+   * @param {String} name
+   */
+  this.hasAttr = name => self.hasAttribute(name)
   /**
    * Remove attribute
-   * @param {String} name 
+   * @param {String} name
    */
-  rmAttr (name) {
-    this._el.removeAttribute(name)
-  }
+  this.rmAttr = name => self.removeAttribute(name)
+  /**
+   * Check if element has class
+   * @param {String} name
+   */
+  this.hasClass = name => self.classList.contains(name)
   /**
    * Set or access element dataset
-   * @param {String} name 
-   * @param {String} value 
+   * @param {String} name
+   * @param {String} value
    */
-  data (name, value=null) {
-    if (value==null) return this._el.dataset[name]
-    this._el.dataset[name]=value
-  }
-  /**
-   * Add class by name
-   * @param {String} name class name
-   */
-  addClass (name) {
-    this._el.classList.add(name)
-  }
-  /**
-   * Remove class by name
-   * @param {String} name class name
-   */
-  removeClass (name) {
-    this._el.classList.remove(name)
-  }
-  /**
-   * Toggle class by name
-   * @param {String} name class name
-   */
-  toggleClass (name) {
-    this._el.classList.toggle(name)
-  }
-  /**
-   * Check if element class list has a class
-   * @param {String} name 
-   */
-  hasClass (name) {
-    return this._el.classList.contains(name)
-  }
-  /**
-   * Change class
-   * @param {String} from current class name
-   * @param {String} to new class name
-   */
-  changeClass(from, to) {
-    this._el.classList.replace(from, to)
-  }
+  this.data = (name, value) => value==undefined?self.dataset[name]:(self.dataset[name]=value)
   /**
    * Replace current element by new element
-   * @param {Element} el 
+   * @param {Element} element
    */
-  replace (el) {
-    this._el.replaceWith(el)
-  }
+  this.replace = element => self.replaceWith(element)
   /**
    * Append child
-   * @param {Element} el 
+   * @param {Element} element
    */
-  append (el) {
-    this._el.appendChild(el)
-  }
+  this.append = element =>self.appendChild(element)
   /**
    * Get bounding rectangle of element
    */
-  boundingRect () {
-    return this._el.getBoundingClientRect()
-  }
+  this.boundingRect = () => self.getBoundingClientRect()
 }
-
-export default function (selector) {
-  return new __El__(selector)
-}
+export default __Element__

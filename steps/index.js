@@ -40,9 +40,4 @@ var __Steps__ = function(element) {
     this.change = callback
   })
 }
-/**
- * @param {Element} element
- */
-export default function (element) {
-  return new __Steps__(element)
-}
+export default __Steps__

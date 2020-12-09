@@ -1,104 +1,97 @@
-import Element from './element.js'
+import __Element__ from './element.js'
 
-const query = function (selector) {
-  return Element(selector)
-}
+const query = element => new __Element__(element)
 /**
  * Listen to document on load event
  * @param {Function} listener
  */
-query.load = function (listener) {
-  document.addEventListener("DOMContentLoaded", listener)
-}
+query.load = listener => document.addEventListener("DOMContentLoaded", listener)
 /**
  * Listen to document on scroll event
  * @param {Function} listener
  */
-query.scroll = function (listener) {
-  document.addEventListener("scroll", listener)
-}
+query.scroll = listener => document.addEventListener("scroll", listener)
 /**
  * Listen to window on resize event
  * @param {Function} listener
  */
-query.resize = function (listener) {
-  window.addEventListener("resize", listener)
-}
+query.resize = listener => window.addEventListener("resize", listener)
 /**
  * Assign event listener to element
- * @param {Element|String} el 
- * @param {String} event 
- * @param {Function} listener 
+ * @param {Element | String} el
+ * @param {String} event
+ * @param {Function} listener
  */
 query.on = function (el, event, listener) {
-  el = typeof el=='object'?el:query.first(el)
-  el.addEventListener(event, listener)
+  el = typeof el=='object' ? el : query.first(el)
+  el.addEventListener(event, e => listener(e, e.detail))
 }
+/**
+ * Emit event n element
+ * @param {Element | String} el
+ * @param {String} event
+ * @param {*} data
+ */
+query.emit = (el, event, data = null) => {
+  el = typeof el=='object' ? el : query.first(el)
+  el.dispatchEvent(new CustomEvent(event, {detail: data}))
+}
+
 /**
  * Create element
  * @param {String} tag_name tag name
  */
-query.create = function (tag_name) {
-  return document.createElement(tag_name)
-}
+query.create = tag_name => document.createElement(tag_name)
 /**
  * Find first element
  *
- * @param {String} selector 
+ * @param {String} selector
  * @param {Element||document} parent
  *
  * @return Element
  */
-query.first = function (selector, parent = document) {
-  return parent.querySelector(selector)
-}
+query.first = (selector, parent = document) => parent.querySelector(selector)
 /**
  * Find elements
  *
- * @param {String} selector 
+ * @param {String} selector
  * @param {Element||document} parent
  *
  * @return NodeListOf<Element>
  */
-query.find = function (selector, parent = document) {
-  return parent.querySelectorAll(selector)
-}
+query.find = (selector, parent = document) => parent.querySelectorAll(selector)
 /**
- * 
- * @param {Element} el 
- * @param {Number} offset distance to top edge 
+ *
+ * @param {Element} el
+ * @param {Number} offset distance to top edge
  */
-query.scrollTop = function (el, offset = null) {
+query.scrollTop = (el, offset = null) => {
   offset = offset==null?el.offsetTop:offset
   var condition;
   if (el.getBoundingClientRect().top < offset) {
-    condition = function (el, offset) {
+    condition = (el, offset) => {
       if (el.getBoundingClientRect().top > offset) return false
       window.scrollTo(0, window.pageYOffset - 10)
       return true
     }
   } else {
-    condition = function (el, offset) {
+    condition = (el, offset) => {
       if (el.getBoundingClientRect().top < offset) return false
       window.scrollTo(0, window.pageYOffset + 10)
       return true
     }
   }
-  var mark = setInterval(function () {
+  var mark = setInterval(() => {
     if (!condition(el, offset)) clearInterval(mark)
   }, 10)
 }
 /**
  * Prevent body from scroll
  */
-query.lock = function () {
-  query.first('body').classList.add('locked')
-}
+query.lock = () => query.first('body').classList.add('locked')
 /**
  * Unlock body
  */
-query.unlock = function () {
-  query.first('body').classList.remove('locked')
-}
+query.unlock = () => query.first('body').classList.remove('locked')
 
 export default query

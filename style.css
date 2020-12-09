@@ -9,6 +9,7 @@ c-select {
   position: relative;
   display: block;
   box-shadow: 0px 0px 10px #0002;
+  user-select: none;
 }
 c-select c-option {
   display: block;
@@ -29,6 +30,7 @@ c-list {
   display: none;
   width: 100%;
   z-index: 2;
+  top: 32px;
 }
 c-list.active {
   display: block;
@@ -174,6 +176,7 @@ message-wrap {
 }
 [modal-box] [modal] {
   margin-left: auto;
+  z-index: 2;
   margin-right: auto;
   margin-bottom: auto;
   overflow-x: hidden;
@@ -192,6 +195,7 @@ message-wrap {
   animation: slide-fade-down 0.3s forwards;
   -webkit-animation: slide-fade-down 0.2s forwards;
 }
+
 .news-list {
   display: flex;
   flex-wrap: wrap;
@@ -357,4 +361,24 @@ file-input input {
 }
 .gallary [thumbnail-list] .item.active {
   border-color: #38c172;
+}
+check-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid grey;
+  user-select: none;
+  padding: 1px;
+  border-radius: 50%;
+}
+check-input svg {
+  display: none;
+  width: 12px;
+  height: 12px;
+}
+check-input[checked] svg {
+  display: block;
+  animation: grow-down .3s forwards;
 }

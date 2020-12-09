@@ -53,7 +53,7 @@
 			position: absolute;
 			width: calc(100% - 8px);
 			left: 10px;
-			top: 9px;
+			top: 8px;
 			height: 4px;
 			border-radius: 4px;
 			background: #F0F0F0;
@@ -86,7 +86,12 @@
 	<range-input name="age" min="0" max="100" step="1" min-value="30" max-value="60"></range-input>
 	<div>
 		<br>
-		<switch-input name="year_format" value="12" checked></switch-input>
+		<switch-input name="hour_format" value="12" checked></switch-input>
+		<br>
+	</div>
+	<div>
+		<br>
+		<switch-input name="has_money" value="12"></switch-input>
 		<br>
 	</div>
 	<div>
@@ -97,6 +102,12 @@
 		</file-input>
 		<br>
 	</div>
+
+	<div>
+		<br>
+		<check-input name="date_format" value="12"></check-input>
+		<br>
+	</div>
 	
 	<button>submit</button>
 </form>
@@ -104,11 +115,21 @@
 
 <range-input name="" min="0" max="100" step="1" min-value="30" max-value="90"></range-input>
 
-<div modal id="test">
+<div modal id="test1">
 	<div style="height: 500px;width: 400px;background-color: #fff;">
-		this is modal
+		this is modal test 1
+		<button onclick="$modal.show('#test2')">show test modal 2</button>
+		<button close>close</button>
 	</div>
 </div>
+<div modal id="test2">
+	<div style="height: 500px;width: 400px;background-color: #fff;">
+		this is modal test 2
+		<button close>close</button>
+	</div>
+</div>
+
+<button onclick="$modal.show('#test1')">show test modal</button>
 <div class="steps-contain">
 	<div class="step"></div>
 	<div class="step"></div>
