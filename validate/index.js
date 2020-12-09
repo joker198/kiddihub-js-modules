@@ -1,6 +1,7 @@
 import rules from './rules.js'
 /**
  * Validator module
+ * @author joker20
  */
 export default {
   /**

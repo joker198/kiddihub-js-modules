@@ -1,4 +1,5 @@
 /**
+ * @author joker20
  * Core of ajax module
  */
 export default {

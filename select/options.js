@@ -1,4 +1,5 @@
 /**
+ * @author joker20
  * @param {Element} element
  */
 var __Options__ = function (element, value) {

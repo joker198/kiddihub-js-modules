@@ -1,5 +1,6 @@
 /**
  * Debounce action
+ * @author joker20
  * @param {Function} callback
  * @param {Number} time
  */

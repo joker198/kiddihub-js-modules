@@ -1,4 +1,5 @@
 /**
+ * @author joker20
  * @param {Element} element
  * @param {Number} index
  */

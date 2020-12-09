@@ -1,5 +1,6 @@
 import Step from './step.js'
 /**
+ * @author joker20
  * @param {Element} element
  */
 var __Steps__ = function(element) {

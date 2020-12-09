@@ -1,3 +1,6 @@
+/**
+ * @author joker20
+ */
 export default {
   star(active) {
     return `<svg item class="${active?'active':''}" viewBox="0 -10 511.99143 511" xmlns="http://www.w3.org/2000/svg">

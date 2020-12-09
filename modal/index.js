@@ -1,5 +1,4 @@
 import $ from '../core.js'
-import __Modal__ from './modal.js'
 import templates from './templates.js'
 
 const __element = {
@@ -40,6 +39,9 @@ const __methods = {
     modal.dispatchEvent(new Event('show-modal'))
   }
 }
+/**
+ * @author joker20
+ */
 export default {
   get box () {
     return __element.box

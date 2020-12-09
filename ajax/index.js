@@ -1,5 +1,7 @@
 import core from './core.js'
-
+/**
+ * @author joker20
+ */
 var __Ajax__ = function () {
   /**
    * Make GET request

@@ -1,6 +1,6 @@
 import process from './process.js'
 /**
- * 
+ * @author joker20
  * @param {Element} element
  */
 var __CForm__ = function(element) {

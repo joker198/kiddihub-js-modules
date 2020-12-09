@@ -1,3 +1,6 @@
+/**
+ * @author joker20
+ */
 export default {
   prev() {
     let element = document.createElement('button')

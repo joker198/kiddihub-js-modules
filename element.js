@@ -1,5 +1,6 @@
 class __El__ {
   /**
+   * @author joker20
    * @param {Element | String} el
    */
   constructor (el) {

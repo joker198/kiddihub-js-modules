@@ -1,3 +1,6 @@
+/**
+ * @author joker20
+ */
 export default {
   item(class_name) {
     let element = document.createElement('div')

@@ -1,5 +1,6 @@
 import templates from './templates.js'
 /**
+ * @author joker20
  * @param {Element} element
  */
 var __RangeInput__ = function(element) {

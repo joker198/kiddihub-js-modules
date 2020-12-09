@@ -1,6 +1,7 @@
 import templates from './templates.js'
 /**
  * Render stars input
+ * @author joker20
  * @param {Element} self
  * @param {Number} val
  */

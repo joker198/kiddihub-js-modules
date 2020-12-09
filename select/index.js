@@ -1,5 +1,6 @@
 import Options from './options.js'
 /**
+ * @author joker20
  * @param {Element} element
  */
 var __CSelect__ = function (element) {
