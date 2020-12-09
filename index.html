@@ -53,7 +53,7 @@
 			position: absolute;
 			width: calc(100% - 8px);
 			left: 10px;
-			top: 9px;
+			top: 8px;
 			height: 4px;
 			border-radius: 4px;
 			background: #F0F0F0;
@@ -86,7 +86,12 @@
 	<range-input name="age" min="0" max="100" step="1" min-value="30" max-value="60"></range-input>
 	<div>
 		<br>
-		<switch-input name="year_format" value="12" checked></switch-input>
+		<switch-input name="hour_format" value="12" checked></switch-input>
+		<br>
+	</div>
+	<div>
+		<br>
+		<switch-input name="has_money" value="12"></switch-input>
 		<br>
 	</div>
 	<div>
@@ -109,6 +114,7 @@
 		this is modal
 	</div>
 </div>
+<button onclick="$modal.show('#test')">show test modal</button>
 <div class="steps-contain">
 	<div class="step"></div>
 	<div class="step"></div>

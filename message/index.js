@@ -36,6 +36,4 @@ var __Message__ = function (element) {
     self.classList.remove('show')
   }
 }
-export default function (element) {
-  return new __Message__(element)
-}
+export default __Message__

@@ -48,9 +48,13 @@ var __CSelect__ = function (element) {
     if (self.value!=current) self.dispatchEvent(new Event('change'))
     self.dispatchEvent(new Event('input'))
   }
-  selected.addEventListener('click', function () { list.toggle() })
+  selected.addEventListener('click', function (e) {
+    e.stopPropagation()
+    list.toggle()
+  })
   this.on = function (event, listener) {
     self.addEventListener(event, listener)
   }
+  document.addEventListener('click', e => list.hide())
 }
 export default __CSelect__

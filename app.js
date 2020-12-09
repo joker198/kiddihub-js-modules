@@ -5,7 +5,7 @@ import StarInput from './star-input/index.js'
 import RangeInput from './range-input/index.js'
 import _Step from './steps/index.js'
 import CSelect from './select/index.js'
-import _Message from './message/index.js'
+import Message from './message/index.js'
 import Ajax from './ajax/index.js'
 import Gallary from './gallary/index.js'
 import SwitchInput from './switch-input/index.js'
@@ -28,11 +28,11 @@ $.find('range-input').forEach(el => {
   new RangeInput(el)
 })
 
-window.steps = _Step($.first('.steps-contain'))
+window.steps = new _Step($.first('.steps-contain'))
 
 window.cselect = new CSelect($.first('c-select'))
 
-window.$message = _Message($.first('[message]'))
+window.$message = new Message($.first('[message]'))
 
 $.find('switch-input').forEach(el => {
   let input = new SwitchInput(el)

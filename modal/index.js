@@ -70,9 +70,7 @@ export default {
 
     if (lock) return true
     $.on(__element.box, 'click', e => { 
-      __element.modals.forEach(modal => {
-        __methods.hide(modal)
-      })
+      __element.modals.forEach(modal => __methods.hide(modal))
       setTimeout(function () {
         __element.box.hide()
       }, __config.delay)

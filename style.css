@@ -9,6 +9,7 @@ c-select {
   position: relative;
   display: block;
   box-shadow: 0px 0px 10px #0002;
+  user-select: none;
 }
 c-select c-option {
   display: block;
@@ -29,6 +30,7 @@ c-list {
   display: none;
   width: 100%;
   z-index: 2;
+  top: 32px;
 }
 c-list.active {
   display: block;
@@ -174,6 +176,7 @@ message-wrap {
 }
 [modal-box] [modal] {
   margin-left: auto;
+  z-index: 2;
   margin-right: auto;
   margin-bottom: auto;
   overflow-x: hidden;
@@ -192,6 +195,7 @@ message-wrap {
   animation: slide-fade-down 0.3s forwards;
   -webkit-animation: slide-fade-down 0.2s forwards;
 }
+
 .news-list {
   display: flex;
   flex-wrap: wrap;
